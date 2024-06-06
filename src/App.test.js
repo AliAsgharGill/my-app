@@ -1,8 +1,14 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
+test("check mock text", () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const textElement = screen.getByText(/Mock Api/i);
+  expect(textElement).toBeInTheDocument();
 });
+
+test('should render mock Api', async () => {
+  render(<App />);
+  const el = await screen.findAllByRole('listitem');
+  expect(el).toHaveLength(10); 
+})
